@@ -14,7 +14,13 @@ const getFromLocalStore = () => {
     }
     return all_products
 }
-// 
+// const display products function
+const setToStorage = (product,quantity) => {
+    const productObj = getFromLocalStore()
+    productObj[product] = quantity
+    const stringifiedProduct = JSON.stringify(productObj)
+    localStorage.setItem('all_products',stringifiedProduct)
+}
 // btn event handler function here
 const addProduct = () => {
     const productName = getInputValue('product-name')
