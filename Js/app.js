@@ -5,6 +5,16 @@ const getInputValue = (id) => {
     inputField.value = ``
     return inputValue
 }
+// local storage setItem as object
+const getFromLocalStore = () => {
+    const getElement = localStorage.getItem('all_products')
+    let all_products = {}
+    if (getElement) {
+        all_products = JSON.parse(getElement)
+    }
+    return all_products
+}
+// 
 // btn event handler function here
 const addProduct = () => {
     const productName = getInputValue('product-name')
@@ -21,7 +31,7 @@ const addProduct = () => {
         </div>
         `
         productContainer.appendChild(div)
-        
+
     }
     else {
         alert(`PRODUCT NAME CAN'T BE NUMBER AND PRODUCT QUANTITY CAN'T BE STRING`)
