@@ -39,7 +39,7 @@ const display = (product,quantity) => {
 const addProduct = () => {
     const productName = getInputValue('product-name')
     const productQuantity = getInputValue('product-quantity')
-    if (isNaN(productName) && !isNaN(productQuantity)) {
+    if (isNaN(productName) && !isNaN(productQuantity) && productQuantity > 0) {
         display(productName,productQuantity)
         setToStorage(productName,productQuantity)
     }
@@ -50,7 +50,6 @@ const addProduct = () => {
 // get product from storage function
 const renderToDisplay = () => {
     const storedObj = JSON.parse(localStorage.getItem('all_products'))
-    // document.getElementById('all-producs').textContent =` `
     for (product in storedObj) {
         const quantity = storedObj[product]
         display(product,quantity)
